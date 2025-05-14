@@ -16,6 +16,12 @@ app.use(express.json());
 // Routes
 app.use('/api/properties', propertyRoutes);
  
+
+
+app.get("/", (req, res) => {
+  res.send("Hello from Express on Vercel!");
+});
+
 // DB connection
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
