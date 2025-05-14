@@ -35,7 +35,7 @@ const AddProperty = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-    await axios.post('https://realestate-b.vercel.app/add', propertyDetails); // Corrected URL
+    await axios.post('https://realestate-b.vercel.app/api/properties/add', propertyDetails); // Corrected URL
       alert('Property Added Successfully!');
       setPropertyDetails({
         name: '',
