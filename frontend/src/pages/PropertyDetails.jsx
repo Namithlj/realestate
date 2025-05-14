@@ -7,7 +7,7 @@ const PropertyDetails = () => {
   const [property, setProperty] = useState(null);
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/properties/${id}`)
+    axios.get(`https://realestate-b.vercel.app/api/properties/${id}`)
       .then(res => setProperty(res.data));
   }, [id]);
 

@@ -21,7 +21,7 @@ const AddProperty = () => {
 
   const fetchProperties = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/properties');
+      const response = await axios.get('https://realestate-b.vercel.app/api/properties');
       setProperties(response.data);
     } catch (error) {
       console.error('Error fetching properties:', error);
@@ -35,7 +35,7 @@ const AddProperty = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-    await axios.post('http://localhost:5000/api/properties/add', propertyDetails); // Corrected URL
+    await axios.post('https://realestate-b.vercel.app/add', propertyDetails); // Corrected URL
       alert('Property Added Successfully!');
       setPropertyDetails({
         name: '',

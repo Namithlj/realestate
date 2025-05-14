@@ -24,9 +24,9 @@ const BuyProperty = () => {
     setLoading(true);
 
     try {
-      await axios.post('http://localhost:5000/api/properties/buy', buyerDetails);
+      await axios.post('https://realestate-b.vercel.app/api/properties/buy', buyerDetails);
       alert('Purchase Request Sent!');
-      const response = await axios.get(`http://localhost:5000/api/properties/search?pincode=${buyerDetails.pincode}`);
+      const response = await axios.get(`https://realestate-b.vercel.app/api/properties/search?pincode=${buyerDetails.pincode}`);
       setProperties(response.data);
     } catch (error) {
       alert('Error in Purchase or Fetching Properties');
