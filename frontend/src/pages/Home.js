@@ -33,7 +33,7 @@ const Home = () => {
   // Fetch properties from backend (initial or with search)
   const fetchProperties = async (pin = '') => {
     try {
-      const url = pin ? `http://localhost:5000/api/properties?pincode=${pin}` : `http://localhost:5000/api/properties`;
+      const url = pin ? `https://realestate-b.vercel.app/api/properties?pincode=${pin}` : `https://realestate-b.vercel.app/api/properties`;
       const res = await axios.get(url);
       setProperties(res.data);
     } catch (error) {
