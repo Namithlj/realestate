@@ -10,7 +10,10 @@ const {
 router.get('/', getAllProperties);
 router.get('/search', getPropertiesByPincode);
 router.post('/add', addProperty);
-router.post('/buy', submitBuyRequest);
+router.post('/buy', (req, res, next) => {
+  console.log("POST /buy route hit");
+  next();
+}, submitBuyRequest);
 
 module.exports = router;
 

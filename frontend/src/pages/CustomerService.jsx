@@ -1,14 +1,29 @@
 import React from 'react';
+import { motion } from 'framer-motion';
+import './CustomerService.css';
 
 const CustomerService = () => {
   return (
-    <div>
-      <h2>Customer Service</h2>
-      <h3>Developer Profile</h3>
-      <p>Developer: John Doe</p>
-      <p>Email: johndoe@realestate.com</p>
-      <p>Contact: +1 234 567 890</p>
-    </div>
+    <motion.div
+      className="customer-service-card"
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+    >
+      <motion.img
+        src="/favicon.ico"  // change to your image filename in public folder
+        alt="Developer"
+        className="profile-pic"
+        initial={{ scale: 0.8 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 0.6 }}
+      />
+      <h2 className="heading">Customer Service</h2>
+      <h3 className="subheading">Developer Profile</h3>
+      <p><strong>Developer:</strong> John Doe</p>
+      <p><strong>Email:</strong> johndoe@realestate.com</p>
+      <p><strong>Contact:</strong> +1 234 567 890</p>
+    </motion.div>
   );
 };
 

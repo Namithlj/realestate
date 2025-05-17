@@ -1,4 +1,5 @@
 const Property = require('../models/Property');
+const Buyer = require('../models/Buyer');
 
 exports.getAllProperties = async (req, res) => {
   try {
@@ -32,8 +33,17 @@ exports.addProperty = async (req, res) => {
 exports.submitBuyRequest = async (req, res) => {
   try {
     const buyerData = req.body;
-     res.status(200).json({ message: "Buyer request received successfully!" });
+    console.log("Received buyer data:", buyerData);
+
+    const newBuyer = new Buyer(buyerData);
+    await newBuyer.save(); // Save to MongoDB
+
+    console.log("Buyer saved to database.");
+    res.status(200).json({ message: "Buyer request received successfully!" });
   } catch (error) {
+    console.error('Error saving buyer request:', error);
     res.status(500).json({ message: "Error processing buyer request" });
   }
 };
+
+

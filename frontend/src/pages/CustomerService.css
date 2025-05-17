@@ -1,0 +1,48 @@
+.customer-service-card {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #fdfdfd;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.heading {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.subheading {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #555;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.customer-service-card p {
+  font-size: 16px;
+  color: #444;
+  margin: 8px 0;
+}
+
+.profile-pic {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 20px;
+  border: 4px solid #007bff;
+}
