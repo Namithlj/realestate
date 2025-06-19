@@ -20,9 +20,9 @@ const CustomerService = () => {
       />
       <h2 className="heading">Customer Service</h2>
       <h3 className="subheading">Developer Profile</h3>
-      <p><strong>Developer:</strong> John Doe</p>
-      <p><strong>Email:</strong> johndoe@realestate.com</p>
-      <p><strong>Contact:</strong> +1 234 567 890</p>
+      <p><strong>Developer:</strong> Namith</p>
+      <p><strong>Email:</strong> namithnamith37@gmail.com</p>
+      <p><strong>Contact:</strong> 8088457841</p>
     </motion.div>
   );
 };

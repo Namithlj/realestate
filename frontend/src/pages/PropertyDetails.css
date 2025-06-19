@@ -1,0 +1,94 @@
+/* PropertyDetails.css */
+
+.property-details-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px 40px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  background-color: #fafafa;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.back-button {
+  display: inline-block;
+  margin-bottom: 24px;
+  padding: 10px 18px;
+  background-color: #0066ff;
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  user-select: none;
+  box-shadow: 0 3px 6px rgba(0, 102, 255, 0.4);
+}
+
+.back-button:hover {
+  background-color: #004bb5;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 28px;
+  text-align: center;
+  letter-spacing: 1px;
+  color: #222;
+  font-weight: 700;
+}
+
+.property-card {
+  background-color: white;
+  border-radius: 12px;
+  padding: 24px 28px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.07);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.property-card:hover {
+  box-shadow: 0 8px 28px rgba(0, 102, 255, 0.15);
+  transform: translateY(-4px);
+}
+
+.property-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+  color: #004bb5;
+}
+
+.property-card p {
+  font-size: 1rem;
+  margin: 6px 0;
+  line-height: 1.5;
+  color: #444;
+}
+
+.property-card p strong {
+  color: #0066ff;
+  font-weight: 600;
+}
+
+@media (max-width: 600px) {
+  .property-details-container {
+    margin: 20px 10px;
+    padding: 0 15px 30px;
+  }
+
+  .property-card {
+    padding: 18px 20px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
+
+  .property-card h3 {
+    font-size: 1.3rem;
+  }
+}

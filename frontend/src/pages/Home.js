@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Home.css';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   const [properties, setProperties] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true); 
   const [pincode, setPincode] = useState('');
   const [searchTriggered, setSearchTriggered] = useState(false);
 
@@ -75,7 +76,8 @@ const Home = () => {
               <h2 className="property-name">{property.name}</h2>
               <p className="property-description">{property.description}</p>
               <p className="property-price">${property.price.toLocaleString()}</p>
-              <button className="property-button">View Details</button>
+              <Link to={`/property/${property._id}`} className="property-link">
+<button className="property-button">View Details</button></Link>
             </div>
           ))}
           {searchTriggered && properties.length === 0 && (

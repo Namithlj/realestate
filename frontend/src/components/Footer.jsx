@@ -24,8 +24,8 @@ const Footer = () => {
       <div className="footer-section animate-slide-left">
         <h3>Contact Us</h3>
         <ul>
-          <li>Phone: 123-456-7890</li>
-          <li>Email: support@realestate.com</li>
+          <li>Phone: 8088457841</li>
+          <li>Email: namithnamith37@gmail.com</li>
           <li>Address: 123 Main Street, City</li>
         </ul>
       </div>

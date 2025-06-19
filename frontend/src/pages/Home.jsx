@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import PropertyCard from '../components/PropertyCard';
-import Footer from '../components/Footer'; // Assuming you have a Footer component
+import Footer from '../components/Footer';
 import { useNavigate } from 'react-router-dom';
 import './Home.css';
 
@@ -11,42 +11,57 @@ const Home = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+  // Fetch all properties
   const fetchAllProperties = async () => {
     try {
       setLoading(true);
-      const res = await axios.get('http://localhost:5000/api/properties');
+      const res = await axios.get('https://realestate-b.vercel.app/api/properties');
       setProperties(res.data);
     } catch (error) {
-      console.error('Error fetching properties:', error);
+      console.error('Error fetching all properties:', error);
       setProperties([]);
     } finally {
       setLoading(false);
     }
   };
 
-  // Fetch all properties initially
-  React.useEffect(() => {
-    fetchAllProperties();
-  }, []);
-
-  const handleSearch = async (e) => {
-    e.preventDefault();
-    if (pincode.trim() === '') {
-      fetchAllProperties();
-      return;
-    }
-
+  // Fetch by pincode
+  const fetchPropertiesByPincode = async (code) => {
     try {
       setLoading(true);
-      // Fetch filtered properties by pincode (make sure backend supports this API)
-      const res = await axios.get(`http://localhost:5000/api/properties/search?pincode=${pincode.trim()}`);
+      const res = await axios.get(
+        `https://realestate-b.vercel.app/api/properties/search?pincode=${encodeURIComponent(code)}`
+      );
       setProperties(res.data);
     } catch (error) {
-      console.error('Error fetching filtered properties:', error);
+      console.error('Error fetching properties by pincode:', error);
       setProperties([]);
     } finally {
       setLoading(false);
     }
+  };
+
+  // Fetch all on initial load
+  useEffect(() => {
+    fetchAllProperties();
+  }, []);
+
+  // Handle search submit
+  const handleSearch = async (e) => {
+    e.preventDefault();
+    const trimmedPincode = pincode.trim();
+
+    if (trimmedPincode === '') {
+      await fetchAllProperties();
+    } else {
+      await fetchPropertiesByPincode(trimmedPincode);
+    }
+  };
+
+  // Reset to all
+  const handleReset = () => {
+    setPincode('');
+    fetchAllProperties();
   };
 
   const handleViewDetails = (id) => {
@@ -56,44 +71,41 @@ const Home = () => {
   return (
     <div className="page-container">
       <main className="content-wrap">
-        <h1 className="title">Featured Properties</h1>
+        <h1 className="title">Search Properties by Pincode</h1>
 
         <form onSubmit={handleSearch} style={{ marginBottom: '20px' }}>
           <input
             type="text"
-            placeholder="Enter Pincode"
             value={pincode}
             onChange={(e) => setPincode(e.target.value)}
+            placeholder="Enter Pincode"
             style={{ padding: '8px', fontSize: '16px', marginRight: '10px' }}
           />
-          <button type="submit" style={{ padding: '8px 16px', fontSize: '16px' }}>
-            Search
-          </button>
+          <button type="submit" style={{ padding: '8px 16px' }}>Search</button>
           <button
             type="button"
-            onClick={() => {
-              setPincode('');
-              fetchAllProperties();
-            }}
-            style={{ padding: '8px 16px', fontSize: '16px', marginLeft: '10px' }}
+            onClick={handleReset}
+            style={{ padding: '8px 16px', marginLeft: '10px' }}
           >
             Reset
           </button>
         </form>
 
-        {loading && <p>Loading properties...</p>}
-
-        {!loading && properties.length === 0 && <p>No properties found.</p>}
-
-        <div className="property-grid">
-          {properties.map((property) => (
-            <PropertyCard
-              key={property._id}
-              property={property}
-              onViewDetails={() => handleViewDetails(property._id)}
-            />
-          ))}
-        </div>
+        {loading ? (
+          <p>Loading properties...</p>
+        ) : properties.length === 0 ? (
+          <p>No properties found{pincode ? ` for pincode ${pincode}` : ''}.</p>
+        ) : (
+          <div className="property-grid">
+            {properties.map((property) => (
+              <PropertyCard
+                key={property._id}
+                property={property}
+                onViewDetails={() => handleViewDetails(property._id)}
+              />
+            ))}
+          </div>
+        )}
       </main>
       <Footer />
     </div>

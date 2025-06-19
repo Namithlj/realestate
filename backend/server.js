@@ -17,6 +17,7 @@ app.get("/", (req, res) => {
   res.send("Hello from Express on Vercel!");
 });
 
+
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
@@ -26,4 +27,5 @@ mongoose.connect(process.env.MONGO_URI, {
 }).catch(err => console.error('DB connection error:', err));
 
 // ✅ Export the Express app instead of listening
+
 module.exports = app;

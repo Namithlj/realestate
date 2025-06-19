@@ -1,3 +1,4 @@
+// src/pages/PropertyDetails.jsx
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -29,23 +30,11 @@ const PropertyDetails = () => {
         ← Back
       </button>
 
-      <h2 style={{ marginBottom: '10px' }}>{property.title}</h2>
-
-      {/* Display image if available */}
-      {property.imageUrl && (
-        <img
-          src={property.imageUrl}
-          alt={property.title}
-          style={{ width: '100%', height: 'auto', borderRadius: '8px', marginBottom: '20px' }}
-        />
-      )}
-
+      <h2>{property.name}</h2>
       <p><strong>Description:</strong> {property.description}</p>
       <p><strong>Address:</strong> {property.address || 'N/A'}</p>
       <p><strong>Pincode:</strong> {property.pincode}</p>
-      <p><strong>Price:</strong> {property.price ? `$${property.price}` : 'N/A'}</p>
-
-      {/* Add any other fields as needed */}
+      <p><strong>Price:</strong> {property.price ? `$${property.price.toLocaleString()}` : 'N/A'}</p>
     </div>
   );
 };
